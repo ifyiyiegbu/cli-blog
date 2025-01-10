@@ -1,6 +1,6 @@
-# cli-blog
+# Cli-Blog Application
 
-a simple command line interface blog
+A simple command line interface blog
 
 ## Dependencies
 

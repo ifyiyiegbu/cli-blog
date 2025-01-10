@@ -5,10 +5,11 @@ let posts = [];
 
 // Function to display the main menu
 function displayMenu() {
-  console.log("\n--- Welcome to Ellie's New Year Blog ---");
+  console.log("\n--- Welcome to Ellie's Programming Journey Blog ---");
   console.log("1. Create a New Post");
   console.log("2. View All Posts");
-  console.log("3. Exit");
+  console.log("3. Update a Post");
+  console.log("4. Exit");
 }
 
 // Function to create a new blog post
@@ -43,6 +44,35 @@ function viewPosts() {
   });
 }
 
+// Function to update an existing blog post
+function updatePost() {
+    console.log("\n--- Update a Post ---");
+    
+    if (posts.length === 0) {
+      console.log("No posts available to update.");
+      return;
+    }
+  
+    const postId = parseInt(prompt("Enter the Post ID of the post you want to update: "), 10);
+    const post = posts.find((p) => p.id === postId);
+  
+    if (!post) {
+      console.log(`No post found with ID ${postId}.`);
+      return;
+    }
+  
+    console.log(`\nCurrent Title: ${post.title}`);
+    const newTitle = prompt("Enter the new title (or press Enter to keep the current title): ");
+    console.log(`Current Content: ${post.content}`);
+    const newContent = prompt("Enter the new content (or press Enter to keep the current content): ");
+  
+    if (newTitle.trim()) post.title = newTitle;
+    if (newContent.trim()) post.content = newContent;
+  
+    console.log("\nPost updated successfully!");
+  }
+  
+
 // Main application loop
 function runBlogApp() {
   let isRunning = true;
@@ -59,6 +89,9 @@ function runBlogApp() {
         viewPosts();
         break;
       case "3":
+        updatePost();
+        break;
+      case "4":
         console.log("Exiting the application. Goodbye!");
         isRunning = false;
         break;
